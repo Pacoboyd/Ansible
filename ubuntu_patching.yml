@@ -1,0 +1,17 @@
+---
+- hosts: all
+  tasks:
+   - name: Update package cache
+     apt: update_cache=yes
+     become: true
+   - name: Upgrade all packages to the latest version
+     apt: upgrade=dist
+     become: true
+   - name: Check if a reboot is required
+     register: file
+     stat: path=/var/run/reboot-required get_md5=no
+     become: true
+   - name: Reboot the server
+     command: /sbin/reboot
+     when: file.stat.exists == true
+     become: true
