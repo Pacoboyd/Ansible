@@ -3,6 +3,8 @@
   tasks:
    - name: Update package cache
      apt: update_cache=yes
+   - name: Cleanup packages
+     apt: autoremove=yes
    - name: Upgrade all packages to the latest version
      apt: upgrade=dist
    - name: Check if a reboot is required
