@@ -1,3 +1,5 @@
+---
+tasks:
 - name: Install pip
   apt:
     pkg: "{{ item }}"
