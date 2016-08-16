@@ -1,16 +1,17 @@
 ---
-tasks:
-- name: Install pip
-  apt:
-    pkg: "{{ item }}"
-    state: installed
-  with_items:
-    - python-dev
-    - python-pip
-- name: Install Docker-py
-  pip:
-    name: docker-py
-- name: Make sure docker is running
-  service:
-    name: docker
-    state: started
+- hosts: all
+  tasks:
+  - name: Install pip
+    apt:
+      pkg: "{{ item }}"
+      state: installed
+    with_items:
+      - python-dev
+      - python-pip
+  - name: Install Docker-py
+    pip:
+      name: docker-py
+  - name: Make sure docker is running
+    service:
+      name: docker
+      state: started
