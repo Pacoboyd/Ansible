@@ -2,9 +2,9 @@
 - hosts: all
   tasks:
   - name: Add key for Docker repository
-    apt_key: keyserver=keyserver.ubuntu.com id=36A1D7869245C8950F966E92D8576A8BA88D21E9 state=present
+    apt_key: keyserver=hkp://p80.pool.sks-keyservers.net:80 id=58118E89F3A912897C070ADBF76221572C52609D state=present
   - name: Add Docker repository
-    apt_repository: repo='deb http://get.docker.io/ubuntu docker main' state=present
+    apt_repository: repo='deb https://apt.dockerproject.org/repo ubuntu-xenial main' state=present
   - name: Install Docker
     apt: name=docker-engine update_cache=yes state=present
   - name: Install pip
