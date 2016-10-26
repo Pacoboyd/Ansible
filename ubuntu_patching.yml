@@ -13,5 +13,8 @@
     register: file
     stat: path=/var/run/reboot-required get_md5=no
   - name: Reboot the server
-    command: /sbin/reboot
+    command: shutdown -r now "Ansible reboot for updates"
     when: file.stat.exists == true
+    async: 0
+    poll: 0
+    ignore_errors: true
