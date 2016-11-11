@@ -15,6 +15,6 @@
   - name: Reboot the server
     command: shutdown -r now "Ansible reboot for updates"
     when: file.stat.exists == true
-    async: 0
+    async: 1
     poll: 0
     ignore_errors: true
