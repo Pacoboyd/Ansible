@@ -9,6 +9,9 @@
     changed_when: "'The following packages will be REMOVED' in autoremove_output.stdout"
   - name: Upgrade all packages to the latest version
     apt: upgrade=dist
+  - name: Cleanup apt cache
+    command: apt-get clean
+    become: yes
   - name: Check if a reboot is required
     register: file
     stat: path=/var/run/reboot-required get_md5=no
