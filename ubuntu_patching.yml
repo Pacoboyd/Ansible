@@ -2,16 +2,17 @@
 - hosts: all
   tasks:
   - name: Update package cache
-    apt: update_cache=yes
+    apt:
+      update_cache: yes
   - name: Autoremove unused packages
-    command: apt-get -y autoremove
-    register: autoremove_output
-    changed_when: "'The following packages will be REMOVED' in autoremove_output.stdout"
-  - name: Upgrade all packages to the latest version
-    apt: upgrade=dist
+    apt:
+      autoremove: yes
+  - name: Update all packages to the latest version
+    apt:
+      upgrade: dist
   - name: Cleanup apt cache
-    command: apt-get clean
-    become: yes
+    apt:
+      autoclean: yes
   - name: Check if a reboot is required
     register: file
     stat: path=/var/run/reboot-required get_md5=no
