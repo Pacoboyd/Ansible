@@ -7,9 +7,4 @@
       autoremove: yes
       upgrade: dist
       autoclean: yes
-  - name: Check if a reboot is required
-    register: file
-    stat: path=/var/run/reboot-required get_md5=no
-  - name: Reboot the server
     reboot: yes
-    when: file.stat.exists == true
