@@ -1,10 +1,12 @@
 ---
 - hosts: all
   tasks:
-  - shell: wg
+  - name: Check WireGuard Status
+    shell: wg
     register: wg_status
 
-  - command: "{{ item }} chdir=/src/package/"
+  - name: Re-enable WireGuard DKMS modules
+    command: "{{ item }} chdir=/src/package/"
     with_items:
     - apt-get install  linux-headers-$(uname -r)
     - apt-get --reinstall install wireguard-dkms
