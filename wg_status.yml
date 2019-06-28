@@ -5,8 +5,6 @@
     shell: wg
     register: wg_status
     
-    
-
   - name: Re-enable WireGuard DKMS modules
     shell: "{{ item }}"
     with_items:
@@ -14,3 +12,5 @@
     - apt-get --reinstall install wireguard-dkms
     - wg-quick up wg0
     when: wg_status.stdout == ""
+    args:
+      warn: false
