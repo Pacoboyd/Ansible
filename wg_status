@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+  - name: Check Wireguard Status
+    service: 
+      name: “{{ item }}”
+      state: started
+      enabled: yes
+      with_items:
+        - wg-quick@wg0
