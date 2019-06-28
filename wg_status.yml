@@ -7,4 +7,4 @@
       state: started
       enabled: yes
     with_items:
-      - wg-quick@wg0
+      - wg-quick
