@@ -1,6 +1,8 @@
 ---
 - hosts: all
   tasks:
+  - name: Clean up old kernels
+    shell: purge-old-kernels --keep 3 -qy
   - name: Update package cache
     apt:
       update_cache: yes
