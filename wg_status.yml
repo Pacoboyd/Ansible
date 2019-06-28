@@ -4,9 +4,11 @@
   - name: Check WireGuard Status
     shell: wg
     register: wg_status
+    
+    
 
   - name: Re-enable WireGuard DKMS modules
-    command: "{{ item }}"
+    shell: "{{ item }}"
     with_items:
     - apt-get install  linux-headers-$(uname -r)
     - apt-get --reinstall install wireguard-dkms
