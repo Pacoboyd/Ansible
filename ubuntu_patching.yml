@@ -5,4 +5,9 @@
     apt: autoremove=yes autoclean=yes
   - name: Dist_upgrade
     apt: update_cache=yes upgrade=dist
+  - name: Check if a reboot is required
+    register: file
+    stat: path=/var/run/reboot-required get_md5=no
+  - name: Reboot the server
     reboot: yes
+    when: file.stat.exists == true
