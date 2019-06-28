@@ -1,10 +1,8 @@
 ---
 - hosts: all
   tasks:
-  - name: Dist-upgrade and cleanup systems
-    apt:
-      update_cache: yes
-      autoremove: yes
-      upgrade: dist
-      autoclean: yes
+  - name: Apt cleanup
+    apt: autoremove=yes autoclean=yes
+  - name: Dist_upgrade
+    apt: update_cache=yes upgrade=dist
     reboot: yes
