@@ -4,5 +4,9 @@
   - shell: wg
     register: wg_status
 
-  - shell: apt-get install  linux-headers-$(uname -r) && apt-get --reinstall install wireguard-dkms
+  - command: "{{ item }} chdir=/src/package/"
+    with_items:
+    - apt-get install  linux-headers-$(uname -r)
+    - apt-get --reinstall install wireguard-dkms
+    - wg-quick up wg0
     when: wg_status.stdout == ""
