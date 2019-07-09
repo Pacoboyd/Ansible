@@ -1,0 +1,6 @@
+---
+- hosts: all
+  tasks:
+  - name: Save the result of 'whoami' in 'whoami_out'
+    win_command: c:\7za\7za b
+    register: 7z_benchmark
