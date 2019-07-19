@@ -13,9 +13,6 @@
           1 {"In Progress"}; 2 {"Succeeded"}; 3 {"Succeeded With Errors"};
           4 {"Failed"}; 5 {"Aborted"}
       }}}, Title
-  - name: List Available Categories
-    win_updates:
-      state: searched
   - name: Scan for All Available Updates
     win_updates:
       category_names: ['Application', 'Connectors', 'CriticalUpdates', 'DefinitionUpdates', 'DeveloperKits', 'FeaturePacks', 'Guidance', 'SecurityUpdates', 'ServicePacks', 'Tools', 'UpdateRollups', 'Updates']
