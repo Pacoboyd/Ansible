@@ -2,8 +2,8 @@
 - hosts: all
   tasks:
   - name: Collect only facts returned by facter
-  setup:
-    gather_subset:
-      - '!all'
-      - '!any'
-      - facter
+    setup:
+      gather_subset:
+        - '!all'
+        - '!any'
+        - facter
